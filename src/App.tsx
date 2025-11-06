@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import  Card  from './components/Card/Card.tsx'
 import data from './data.json'
 import './App.css'
 
@@ -9,10 +10,13 @@ export default function App() {
   }
 
 
+
   return (
     <>
     <h1>Password Game</h1>
     <button onClick={loadCard}>New Random Game</button>
+    {cardId === 0 ? "" : <Card id={cardId}/> }
+
     
     </>
   )
