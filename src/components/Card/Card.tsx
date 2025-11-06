@@ -1,4 +1,4 @@
-import "./card.css"
+import "./Card.css"
 import { useState, useEffect } from "react"
 import data from "../../data.json"
 
