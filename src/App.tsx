@@ -1,10 +1,11 @@
-import { useState, useContext } from "react"
+import {useState} from "react"
+// import { useState, useContext } from "react"
 import Card from "./components/Card/Card.tsx"
 import Options from "./components/Options/Options.tsx"
 import data from "./data.json"
 import passwordLogo from "./assets/password-logo.svg"
 import "./App.css"
-import { GameOptionsContext } from "./context/GameOptionsContext.tsx"
+// import { GameOptionsContext } from "./context/GameOptionsContext.tsx"
 
 
 export default function App() {
@@ -12,7 +13,7 @@ export default function App() {
   function loadCard() {
     setCardId(Math.floor(Math.random() * data.length))
   }
-  const gameOptions = useContext(GameOptionsContext)
+  // const gameOptions = useContext(GameOptionsContext)
 
   return (
     <main>
