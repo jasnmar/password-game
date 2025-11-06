@@ -1,0 +1,11 @@
+fieldset {
+  display:flex;
+  flex-direction: column;
+  border:0;
+
+  .selection{
+    display:flex;
+    flex-direction:row;
+    gap:.5em;
+  }
+}
