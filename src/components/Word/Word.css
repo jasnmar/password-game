@@ -1,0 +1,17 @@
+.disabled {
+  background: gray;
+  border-color: gray;
+  color:black;
+}
+
+.word-container {
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  gap:1rem;
+  .word {
+    border:3px orangered solid;
+    padding:.5rem;
+    border-radius:10px;
+  }
+}

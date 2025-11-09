@@ -1,44 +1,76 @@
 import "./Card.css"
 import { useState, useEffect } from "react"
+import Word from "../Word/Word.tsx"
 import data from "../../data.json"
+// import Scoreboard from "../Scoreboard/Scoreboard.tsx"
 
-export default function Card({ id }: { id: number }) {
-  const [wordArray, setWordArray] = useState(data[id - 1].words)
+export default function Card({ id }: { id: number, }) {
+  //The word list on the card
+  const [wordArray, setWordArray] = useState(data[id - 1].Awords)
+  //The index of the current word
   const [cWordIndex, setCWordIndex] = useState(0)
+  //The number of guesses left for the current word
+  const [guesses, setGuesses] = useState(10)
+  //The current team
+  const [currentTeam, setCurrentTeam] = useState("A")
 
-  const displayWord: string[] = []
-  for (let i = 0; i < wordArray.length; i++) {
-    if (i === cWordIndex) {
-      displayWord.push(wordArray[i])
-      continue
+
+
+  function switchTeams(cTeam: string) {
+    if(cTeam === "A") {
+      return "B"
+    } else {
+      return "A"
     }
-    displayWord.push("*****")
+
+  }
+  //Setting up stuff for the wordlist
+  function handleGuessClick(): void {
+    if(guesses>1) {
+      setGuesses(guesses - 1)
+    } else {
+      setCWordIndex(cWordIndex + 1)
+      setGuesses(10)
+    }
+    setCurrentTeam(switchTeams(currentTeam))
+  }
+
+  const wordList = []
+  for (let i = 0; i < wordArray.length; i++) {
+    wordList.push(
+      <Word
+        key={i}
+        word={wordArray[i]}
+        active={i == cWordIndex ? true : false}
+        guessClickHandler={() => handleGuessClick()}
+        correctClickHandler={() => handleNextWordClick()}
+        guessCount={guesses}
+      />
+    )
   }
 
   useEffect(() => {
-    setWordArray(data[id - 1].words)
+    setWordArray(data[id - 1].Awords)
     setCWordIndex(0)
+    setGuesses(10)
   }, [id])
 
-  function handleClick() {
+  function handleNextWordClick() {
     if (cWordIndex === wordArray.length - 1) {
       setCWordIndex(0)
     } else {
       setCWordIndex(cWordIndex + 1)
+      setGuesses(10)
+      setCurrentTeam(switchTeams(currentTeam))
     }
-    console.log(cWordIndex)
   }
+
   return (
     <div className="simple-card">
       <h2>Card {id}</h2>
-      <button onClick={handleClick}>Next Word</button>
-      <div className="word-container">
-        <p>{displayWord[0]}</p>
-        <p>{displayWord[1]}</p>
-        <p>{displayWord[2]}</p>
-        <p>{displayWord[3]}</p>
-        <p>{displayWord[4]}</p>
-      </div>
+      {/* {gameType === "managed" ? <Scoreboard currentTeam={currentTeam} />: ""} */}
+      <p>Current Team: {currentTeam}</p>
+      <div className="words-container">{wordList}</div>
     </div>
   )
 }

@@ -1,25 +1,36 @@
-import {useState} from "react"
-// import { useState, useContext } from "react"
+import { useState } from "react"
 import Card from "./components/Card/Card.tsx"
-import Options from "./components/Options/Options.tsx"
+// import Options from "./components/Options/Options.tsx"
 import data from "./data.json"
 import passwordLogo from "./assets/password-logo.svg"
 import "./App.css"
-// import { GameOptionsContext } from "./context/GameOptionsContext.tsx"
+// import TeamSelector from "./components/TeamSelector/TeamSelector.tsx"
+
 
 
 export default function App() {
   const [cardId, setCardId] = useState(0)
+
+  // const [gameType, setGameType] = useState("simple")
+
+
   function loadCard() {
     setCardId(Math.floor(Math.random() * data.length))
   }
-  // const gameOptions = useContext(GameOptionsContext)
+
+
+  // function handleGameTypeClick(e: React.ChangeEvent<HTMLInputElement>) {
+  //   setGameType(e.target.value)
+  // }
+
 
   return (
     <main>
       <img src={passwordLogo} alt="Password Logo" />
-      <Options />
+      {/* <Options gameType={gameType} optionsClick={(e) => handleGameTypeClick(e)}/> */}
       <button onClick={loadCard}>New Game</button>
+      {/* {gameType === "managed" ? <TeamSelector optionsClick={(e) => handleTeamClick(e)}/> : ""} */}
+      {/* {cardId === 0 ? "" : <Card id={cardId} gameType={gameType} />} */}
       {cardId === 0 ? "" : <Card id={cardId} />}
       {/* {gameOptions.gameType} */}
     </main>

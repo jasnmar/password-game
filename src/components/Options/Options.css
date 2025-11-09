@@ -6,6 +6,6 @@ fieldset {
   .selection{
     display:flex;
     flex-direction:row;
-    gap:.5em;
+    gap:.5rem;
   }
 }
