@@ -14,6 +14,8 @@ export default function Card({ id }: { id: number, }) {
   const [guesses, setGuesses] = useState(10)
   //The current team
   const [currentTeam, setCurrentTeam] = useState("A")
+    //The score, index 0 is team A, index 1 is team B
+  const [score, setScore] = useState([0, 0])
 
   function switchTeams(cTeam: string) {
     if(cTeam === "A") {
