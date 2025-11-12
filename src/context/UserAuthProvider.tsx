@@ -1,5 +1,6 @@
-import { useState, useEffect, type ReactNode} from "react"
+import { useState, useEffect, type ReactNode } from "react"
 import { UserContext } from "./userAuth.tsx"
+import app from "../firebase.ts"
 import { type UserInfo } from "../interfaces.tsx"
 import { getAuth, onAuthStateChanged, type User } from "firebase/auth"
 
@@ -9,7 +10,8 @@ export default function UserAuthProvider({
   children: ReactNode
 }) {
   const [user, setUser] = useState<UserInfo | null>(null)
-  const auth = getAuth()
+  console.log("app: ", app)
+  const auth = getAuth(app)
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(
