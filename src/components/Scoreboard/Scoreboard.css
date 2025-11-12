@@ -1,0 +1,18 @@
+
+
+.scoreboard {
+  display:flex;
+  flex-direction: row;
+  gap:.5rem;
+  div {
+    border:4px solid red;
+    padding:.25rem;
+    border-radius: 8px;
+    background:grey;
+  }
+}
+
+div .active {
+  background:yellow;
+  font-weight: bold;
+}
