@@ -2,6 +2,7 @@ import "./Card.css"
 import { useState, useEffect } from "react"
 import Word from "../Word/Word.tsx"
 import data from "../../data.json"
+import Scoreboard from "../Scoreboard/Scoreboard.tsx"
 // import Scoreboard from "../Scoreboard/Scoreboard.tsx"
 
 export default function Card({ id }: { id: number, }) {
@@ -20,8 +21,8 @@ export default function Card({ id }: { id: number, }) {
     } else {
       return "A"
     }
-
   }
+
   //Setting up stuff for the wordlist
   function handleGuessClick(): void {
     if(guesses>1) {
@@ -51,12 +52,28 @@ export default function Card({ id }: { id: number, }) {
     setWordArray(data[id - 1].Awords)
     setCWordIndex(0)
     setGuesses(10)
+    setScore([0, 0])
   }, [id])
 
+  function updateScore() {
+    let scoreValue = guesses
+    if(cWordIndex === wordArray.length - 1) {
+      scoreValue = guesses * 2
+    }
+    if(currentTeam === "A") {
+      setScore([score[0] + scoreValue, score[1]])
+    } else {
+      setScore([score[0], score[1] + scoreValue])
+    }
+  }
+
+
   function handleNextWordClick() {
+    updateScore()
     if (cWordIndex === wordArray.length - 1) {
       setCWordIndex(0)
     } else {
+
       setCWordIndex(cWordIndex + 1)
       setGuesses(10)
       setCurrentTeam(switchTeams(currentTeam))
@@ -66,8 +83,8 @@ export default function Card({ id }: { id: number, }) {
   return (
     <div className="simple-card">
       <h2>Card {id}</h2>
+      <Scoreboard currentTeam={currentTeam} score={score}/>
       {/* {gameType === "managed" ? <Scoreboard currentTeam={currentTeam} />: ""} */}
-      <p>Current Team: {currentTeam}</p>
       <div className="words-container">{wordList}</div>
     </div>
   )
