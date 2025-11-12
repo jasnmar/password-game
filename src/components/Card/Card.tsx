@@ -14,8 +14,6 @@ export default function Card({ id }: { id: number, }) {
   //The current team
   const [currentTeam, setCurrentTeam] = useState("A")
 
-
-
   function switchTeams(cTeam: string) {
     if(cTeam === "A") {
       return "B"
