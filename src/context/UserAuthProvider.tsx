@@ -10,7 +10,6 @@ export default function UserAuthProvider({
   children: ReactNode
 }) {
   const [user, setUser] = useState<UserInfo | null>(null)
-  console.log("app: ", app)
   const auth = getAuth(app)
 
   useEffect(() => {

@@ -23,7 +23,7 @@ export default function Auth() {
           accessToken: result.user.refreshToken,
         })
       }
-      console.log("result: ", result.user)
+
     } catch (error) {
       console.error("Error signing in with google: ", error)
     }
