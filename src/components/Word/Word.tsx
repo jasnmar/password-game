@@ -7,7 +7,6 @@ export default function Word({
   guessClickHandler,
   correctClickHandler,
   guessCount,
-
 }: {
   word: string
   active: boolean
