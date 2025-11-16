@@ -1,6 +1,6 @@
 import { useState, useContext } from "react"
 import Card from "./components/Card/Card.tsx"
-import Auth from "./components/Auth/Auth.tsx"
+// import Auth from "./components/Auth/Auth.tsx"
 import Options from "./components/Options/Options.tsx"
 import Logo from "./components/Logo/Logo.tsx"
 import { UserContext } from "./context/userAuth.tsx"
@@ -26,7 +26,7 @@ export default function App() {
     <>
       <header>
         <Logo />
-        <Auth />
+        {/* <Auth /> */}
       </header>
       <main>
         {user && <p>Welcome, {user.displayName}!</p>}
