@@ -5,7 +5,7 @@ import data from "../../data.json"
 import Scoreboard from "../Scoreboard/Scoreboard.tsx"
 // import Scoreboard from "../Scoreboard/Scoreboard.tsx"
 
-export default function Card({ id }: { id: number, }) {
+export default function Card({ id }: { id: number }) {
   //The word list on the card
   const [wordArray, setWordArray] = useState(data[id - 1].Awords)
   //The index of the current word
@@ -14,20 +14,30 @@ export default function Card({ id }: { id: number, }) {
   const [guesses, setGuesses] = useState(10)
   //The current team
   const [currentTeam, setCurrentTeam] = useState("A")
-    //The score, index 0 is team A, index 1 is team B
+  //The score, index 0 is team A, index 1 is team B
   const [score, setScore] = useState([0, 0])
 
+  //Reset the card when a new ID is put in the card
+  //i.e. start a new card
+  useEffect(() => {
+    setWordArray(data[id - 1].Awords)
+    setCWordIndex(0)
+    setGuesses(10)
+    setScore([0, 0])
+  }, [id])
+
+  //Switch teams happens in a couple different places
+  //so it's generalized.
   function switchTeams(cTeam: string) {
-    if(cTeam === "A") {
+    if (cTeam === "A") {
       return "B"
     } else {
       return "A"
     }
   }
 
-  //Setting up stuff for the wordlist
   function handleGuessClick(): void {
-    if(guesses>1) {
+    if (guesses > 1) {
       setGuesses(guesses - 1)
     } else {
       setCWordIndex(cWordIndex + 1)
@@ -44,38 +54,29 @@ export default function Card({ id }: { id: number, }) {
         word={wordArray[i]}
         active={i == cWordIndex ? true : false}
         guessClickHandler={() => handleGuessClick()}
-        correctClickHandler={() => handleNextWordClick()}
+        correctClickHandler={() => handleCorrectWordClick()}
         guessCount={guesses}
       />
     )
   }
 
-  useEffect(() => {
-    setWordArray(data[id - 1].Awords)
-    setCWordIndex(0)
-    setGuesses(10)
-    setScore([0, 0])
-  }, [id])
-
   function updateScore() {
     let scoreValue = guesses
-    if(cWordIndex === wordArray.length - 1) {
+    if (cWordIndex === wordArray.length - 1) {
       scoreValue = guesses * 2
     }
-    if(currentTeam === "A") {
+    if (currentTeam === "A") {
       setScore([score[0] + scoreValue, score[1]])
     } else {
       setScore([score[0], score[1] + scoreValue])
     }
   }
 
-
-  function handleNextWordClick() {
+  function handleCorrectWordClick() {
     updateScore()
     if (cWordIndex === wordArray.length - 1) {
       setCWordIndex(0)
     } else {
-
       setCWordIndex(cWordIndex + 1)
       setGuesses(10)
       setCurrentTeam(switchTeams(currentTeam))
@@ -85,7 +86,7 @@ export default function Card({ id }: { id: number, }) {
   return (
     <div className="simple-card">
       <h2>Card {id}</h2>
-      <Scoreboard currentTeam={currentTeam} score={score}/>
+      <Scoreboard currentTeam={currentTeam} score={score} />
       {/* {gameType === "managed" ? <Scoreboard currentTeam={currentTeam} />: ""} */}
       <div className="words-container">{wordList}</div>
     </div>

@@ -1,0 +1,32 @@
+
+.auth {
+  display:none;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+}
+
+.initial-button, .google-button{
+  /* padding:.3rem; */
+  display:flex;
+  flex-direction:column;
+  border-radius:50%;
+  height:2.5rem;
+  aspect-ratio: 1;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.initial-button {
+  background:green;
+  span{
+    color:white;
+    font-weight: bold;
+  }
+}
+
+.google-button {
+  background:#fff;
+
+}

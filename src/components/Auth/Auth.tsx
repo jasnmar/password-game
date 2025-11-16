@@ -1,3 +1,4 @@
+import "./Auth.css"
 import app from "../../firebase"
 import { useContext } from "react"
 import { UserContext } from "../../context/userAuth"
@@ -7,6 +8,7 @@ import {
   GoogleAuthProvider,
   signOut,
 } from "firebase/auth"
+import googleg from "../../assets/googleg.svg"
 
 export default function Auth() {
   const { user, setUser } = useContext(UserContext)
@@ -23,19 +25,23 @@ export default function Auth() {
           accessToken: result.user.refreshToken,
         })
       }
-
     } catch (error) {
       console.error("Error signing in with google: ", error)
     }
   }
-
+  const initial = user?.displayName?.charAt(0).toUpperCase()
   return (
-    <div>
+    <div className="auth">
       {!user ? (
-        <button onClick={signInWithGoogle}>Login with Google</button>
+        <div className="google-button" onClick={signInWithGoogle}>
+          <img src={googleg} alt="Google Logo" />
+        </div>
       ) : (
-        <button onClick={() => signOut(auth)}>Logout</button>
+        <div className="initial-button" onClick={() => signOut(auth)}>
+          <span >{initial}</span>
+        </div>
       )}
+
     </div>
   )
 }

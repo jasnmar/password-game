@@ -1,7 +1,22 @@
-main {
-  display:flex;
+body {
+  display: flex;
   flex-direction: column;
-  background:linear-gradient(115deg, orangered,#0fdd00);
-  height:100vh;
-  padding:1rem;
+  --background-gradient: linear-gradient(115deg, orangered, #0fdd00);
+  background: var(--background-gradient);
+  min-height: 100vh;
+  padding: 1rem;
+  align-items: center;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  max-width:600px;
+}
+
+header {
+  display:grid;
+  grid-template-columns: 75% 20%;
+  gap:.5rem;
+  margin-bottom:.5rem;
 }
