@@ -1,11 +1,8 @@
-import "./Card.css"
 import { useState, useEffect } from "react"
-import Word from "../Word/Word.tsx"
 import data from "../../data.json"
-import Scoreboard from "../Scoreboard/Scoreboard.tsx"
-// import Scoreboard from "../Scoreboard/Scoreboard.tsx"
+import CardDisplay from "./CardDisplay"
 
-export default function Card({ id }: { id: number }) {
+export default function SimpleGame({ id }: { id: number }) {
   //The word list on the card
   const [wordArray, setWordArray] = useState(data[id - 1].Awords)
   //The index of the current word
@@ -18,7 +15,6 @@ export default function Card({ id }: { id: number }) {
   const [score, setScore] = useState([0, 0])
 
   //Reset the card when a new ID is put in the card
-  //i.e. start a new card
   useEffect(() => {
     setWordArray(data[id - 1].Awords)
     setCWordIndex(0)
@@ -26,8 +22,6 @@ export default function Card({ id }: { id: number }) {
     setScore([0, 0])
   }, [id])
 
-  //Switch teams happens in a couple different places
-  //so it's generalized.
   function switchTeams(cTeam: string) {
     if (cTeam === "A") {
       return "B"
@@ -44,20 +38,6 @@ export default function Card({ id }: { id: number }) {
       setGuesses(10)
     }
     setCurrentTeam(switchTeams(currentTeam))
-  }
-
-  const wordList = []
-  for (let i = 0; i < wordArray.length; i++) {
-    wordList.push(
-      <Word
-        key={i}
-        word={wordArray[i]}
-        active={i == cWordIndex ? true : false}
-        guessClickHandler={() => handleGuessClick()}
-        correctClickHandler={() => handleCorrectWordClick()}
-        guessCount={guesses}
-      />
-    )
   }
 
   function updateScore() {
@@ -84,11 +64,15 @@ export default function Card({ id }: { id: number }) {
   }
 
   return (
-    <div className="simple-card">
-      <h2>Card {id}</h2>
-      <Scoreboard currentTeam={currentTeam} score={score} />
-      {/* {gameType === "managed" ? <Scoreboard currentTeam={currentTeam} />: ""} */}
-      <div className="words-container">{wordList}</div>
-    </div>
+    <CardDisplay
+      id={id}
+      words={wordArray}
+      currentWordIndex={cWordIndex}
+      guesses={guesses}
+      score={score}
+      currentTeam={currentTeam}
+      onGuess={handleGuessClick}
+      onCorrect={handleCorrectWordClick}
+    />
   )
 }

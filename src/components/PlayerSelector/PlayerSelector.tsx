@@ -1,35 +1,35 @@
-import "./TeamSelector.css"
+import "./PlayerSelector.css"
 
-export default function TeamSelector({
+export default function PlayerSelector({
   optionsClick,
 }: {
   optionsClick: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) {
   return (
     <>
-      <h2>Team Selector</h2>
-      <form id="team">
-        <fieldset form="team">
-          <legend>Team</legend>
+      <form id="player">
+        <fieldset form="player">
+          <legend>Who are you?</legend>
           <div className="selection">
             <input
               onChange={(e) => optionsClick(e)}
               type="radio"
-              id="A"
-              name="team"
-              value="A"
+              id="player1"
+              name="player"
+              value="player1"
+              defaultChecked={true}
             />
-            <label htmlFor="A">Team A</label>
+            <label htmlFor="player1">Player 1</label>
           </div>
           <div className="selection">
             <input
               onChange={(e) => optionsClick(e)}
               type="radio"
-              id="B"
-              name="team"
-              value="B"
+              id="player2"
+              name="player"
+              value="player2"
             />
-            <label htmlFor="B">Team B</label>
+            <label htmlFor="player2">Player 2</label>
           </div>
         </fieldset>
       </form>

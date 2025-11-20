@@ -1,6 +1,6 @@
 import { useState, useEffect, type ReactNode } from "react"
 import { UserContext } from "./userAuth.tsx"
-import app from "../firebase.ts"
+import { app } from "../firebase.ts"
 import { type UserInfo } from "../interfaces.tsx"
 import { getAuth, onAuthStateChanged, type User } from "firebase/auth"
 
