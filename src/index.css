@@ -1,5 +1,6 @@
-
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -12,9 +13,11 @@
     interpolate-size: allow-keywords;
   }
 }
-:root{
-  --color-light:yellow;
-  --color-dark:red;
+:root {
+  --color-light: yellow;
+  --color-dark: red;
+  --color-neutral: grey;
+  --font-permanent-marker: "Permanent Marker", cursive;
 }
 
 body {
@@ -27,36 +30,71 @@ body {
   font-style: normal;
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
+input[type="radio"] {
+  appearance: none;
+  margin-top: .35rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  /* background-color: var(--color-neutral); */
+  --background-color:var(--color-neutral);
+  background:radial-gradient(var(--background-color) 50%, var(--color-dark) 0 100%);
+  position: relative;
+  cursor: pointer;
+  &:checked {
+    --background-color: var(--color-light);
+  }
+}
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
 p {
   text-wrap: pretty;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 
 button {
-  width:max-content;
-  border-width:5px;
-  border-radius:5px;
-  border-color:var(--color-light);
-  background:var(--color-dark);
-  color:var(--color-light);
-  font-weight: bold;
+  width: max-content;
+  border-width: 5px;
+  border-radius: 5px;
+  border-color: var(--color-light);
+  background: var(--color-dark);
+  color: var(--color-light);
+  font-weight: 100;
+  font-family: var(--font-permanent-marker);
 }

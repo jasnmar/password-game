@@ -1,30 +1,45 @@
-
-
 @property --glow-deg {
-  syntax:"<angle>";
+  syntax: "<angle>";
   inherits: true;
-  initial-value:0deg;
-
+  initial-value: 0deg;
 }
 
 .logo-wrapper {
-  --gradient-colors:orangered,orange,yellow,white, orangered ;
-  --gradient-glow:conic-gradient(from var(--glow-deg), var(--gradient-colors));
-  background:
-    padding-box var(--background-gradient) ,
+  --gradient-colors: white, yellow, gold, white;
+  --gradient-glow: conic-gradient(from var(--glow-deg), var(--gradient-colors));
+  background: padding-box var(--background-gradient),
     border-box var(--gradient-glow);
 
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  max-width:100%;
-  corner-shape:bevel;
-  border-radius:50px;
-  border:6px solid transparent;
-  padding-inline:3rem;
-  padding-block:1rem;
-  position:relative;
-  isolation:isolate;
+  max-width: 100%;
+
+  --bevel: 50px;
+  /* Fallback: Use clip-path for the bevel effect on all browsers */
+  clip-path: polygon(
+    var(--bevel) 0,
+    calc(100% - var(--bevel)) 0,
+    100% var(--bevel),
+    100% calc(100% - var(--bevel)),
+    calc(100% - var(--bevel)) 100%,
+    var(--bevel) 100%,
+    0 calc(100% - var(--bevel)),
+    0 var(--bevel)
+  );
+
+  /* Progressive Enhancement: Use native corner-shape if supported */
+  @supports (corner-shape: bevel) {
+    clip-path: none;
+    corner-shape: bevel;
+    border-radius: var(--bevel);
+  }
+
+  border: 6px solid transparent;
+  padding-inline: 3rem;
+  padding-block: 1rem;
+  position: relative;
+  isolation: isolate;
   animation: glow 10s linear infinite;
 
   /* &::before {
@@ -51,26 +66,23 @@
     opacity:0.5;
   } */
 
-  p{
+  p {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 2rem;
     background-clip: text;
-    opacity:1;
-    background:var(--gradient-glow) 0 0 / 200% 200%;
+    opacity: 1;
+    background: var(--gradient-glow) 0 0 / 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
   }
 }
 
 @keyframes glow {
   0% {
-    --glow-deg:0deg;
+    --glow-deg: 0deg;
   }
   100% {
-    --glow-deg:360deg;
-  
-  
+    --glow-deg: 360deg;
   }
 }

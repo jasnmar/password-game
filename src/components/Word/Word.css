@@ -11,8 +11,13 @@
   align-items: center;
   gap: 0.5rem;
   .word {
-    border: 3px orangered solid;
+    font-weight: bold;
+    border: 3px var(--color-dark) solid;
     padding: 0.5rem;
     border-radius: 10px;
+    background: var(--color-light);
+    &.disabled {
+      background: var(--color-neutral);
+    }
   }
 }

@@ -1,4 +1,4 @@
-import "../Card/Card.css"
+
 import "./CardDisplay.css"
 import Word from "../Word/Word.tsx"
 import Scoreboard from "../Scoreboard/Scoreboard.tsx"
@@ -15,7 +15,6 @@ interface CardDisplayProps {
 }
 
 export default function CardDisplay({
-  id,
   words,
   currentWordIndex,
   guesses,
@@ -40,7 +39,6 @@ export default function CardDisplay({
 
   return (
     <div className="simple-card">
-      <h2>Card {id}</h2>
       <Scoreboard currentTeam={currentTeam} score={score} />
       <div className="words-container">
         {words.length > 0 ? (
