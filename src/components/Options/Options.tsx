@@ -38,8 +38,8 @@ export default function Options({
             <label htmlFor="managed">Managed</label>
           </div>
         </fieldset>
-        <PlayerSelector optionsClick={playerClick} />
       </form>
+      {gameType === "managed" && <PlayerSelector optionsClick={playerClick} />}
     </>
   )
 }

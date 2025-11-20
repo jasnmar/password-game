@@ -34,8 +34,9 @@ export default function App() {
         <Logo />
         <Auth />
       </header>
+
       <main>
-        {user && <p>Welcome, {user.displayName}!</p>}
+        {user && <p className="welcome">Welcome, {user.displayName}!</p>}
         {user && (
           <Options
             gameType={gameType}
@@ -46,7 +47,7 @@ export default function App() {
         
         {gameType === "simple" && (
            <>
-             <button onClick={loadCard}>New Game</button>
+             <button className="new-game-button" onClick={loadCard}>New Game</button>
              {cardId > 0 && <SimpleGame id={cardId} />}
            </>
         )}

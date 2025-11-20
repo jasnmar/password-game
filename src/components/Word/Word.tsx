@@ -16,7 +16,7 @@ export default function Word({
 }) {
   return (
     <div className="word-container">
-      <span className="word">{active == true ? word : "*****"}</span>
+      <span className={active ? "word" : "word disabled"}>{active == true ? word : "********"}</span>
       <span className="guesses">{active == true ? guessCount : ""}</span>
       {active == true ? (
         <button

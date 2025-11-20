@@ -212,10 +212,10 @@ export default function ManagedGame({ userRole }: ManagedGameProps) {
   return (
     <div className="managed-game">
       <div className="game-info">
-        <p>Game ID: <strong>{gameId}</strong></p>
-        <p>You are: <strong>{userRole === "player1" ? "Player 1" : "Player 2"}</strong></p>
-        <p>Current Turn: <strong>Team {currentTeam}</strong></p>
-        <p>Clue Giver: <strong>{activeClueGiverRole === "player1" ? "Player 1" : "Player 2"}</strong></p>
+        <p>Game ID: {gameId}</p>
+        <p>You are: {userRole === "player1" ? "Player 1" : "Player 2"}</p>
+        <p>Current Turn: Team {currentTeam}</p>
+        <p>Clue Giver: {activeClueGiverRole === "player1" ? "Player 1" : "Player 2"}</p>
       </div>
       <CardDisplay
         id={cardId}
