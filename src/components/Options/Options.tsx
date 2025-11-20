@@ -1,13 +1,15 @@
+import PlayerSelector from "../PlayerSelector/PlayerSelector"
 import "./Options.css"
 
 export default function Options({
   gameType,
   optionsClick,
+  playerClick,
 }: {
   gameType: string
   optionsClick: (e: React.ChangeEvent<HTMLInputElement>) => void
+  playerClick: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) {
-
   return (
     <>
       <form id="options">
@@ -36,6 +38,7 @@ export default function Options({
             <label htmlFor="managed">Managed</label>
           </div>
         </fieldset>
+        <PlayerSelector optionsClick={playerClick} />
       </form>
     </>
   )
