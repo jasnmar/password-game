@@ -1,12 +1,12 @@
 fieldset {
-  display:flex;
+  display: flex;
   flex-direction: column;
-  border:0;
-  font-family: var(--font-permanent-marker);
+  border: 0;
+  font-family: var(--font-righteous);
 
-  .selection{
-    display:flex;
-    flex-direction:row;
-    gap:.5rem;
+  .selection {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
   }
 }

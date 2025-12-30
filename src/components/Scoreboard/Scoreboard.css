@@ -1,24 +1,22 @@
-
-
 .scoreboard {
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap:.5rem;
-  width:100%;
+  gap: 0.5rem;
+  width: 100%;
   div {
-    border:4px solid red;
-    padding:.25rem;
+    border: 4px solid red;
+    padding: 0.25rem;
     border-radius: 8px;
-    background:var(--color-neutral);
-    width:80%;
+    background: var(--color-neutral);
+    width: 80%;
     text-align: center;
-    font-family: var(--font-permanent-marker);
+    font-family: var(--font-righteous);
   }
 }
 
 div .active {
-  background:yellow;
+  background: yellow;
   font-weight: bold;
 }
