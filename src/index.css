@@ -17,7 +17,8 @@
   --color-light: yellow;
   --color-dark: red;
   --color-neutral: grey;
-  --font-permanent-marker: "Permanent Marker", cursive;
+  --font-righteous: "Permanent Marker", cursive;
+  --font-righteous: "Righteous", san-serif;
 }
 
 body {
@@ -47,13 +48,16 @@ select {
 }
 input[type="radio"] {
   appearance: none;
-  margin-top: .35rem;
+  margin-top: 0.35rem;
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
   /* background-color: var(--color-neutral); */
-  --background-color:var(--color-neutral);
-  background:radial-gradient(var(--background-color) 50%, var(--color-dark) 0 100%);
+  --background-color: var(--color-neutral);
+  background: radial-gradient(
+    var(--background-color) 50%,
+    var(--color-dark) 0 100%
+  );
   position: relative;
   cursor: pointer;
   &:checked {
@@ -96,5 +100,5 @@ button {
   background: var(--color-dark);
   color: var(--color-light);
   font-weight: 100;
-  font-family: var(--font-permanent-marker);
+  font-family: var(--font-righteous);
 }

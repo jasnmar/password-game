@@ -1,7 +1,11 @@
 body {
   display: flex;
   flex-direction: column;
-  --background-gradient: linear-gradient(var(--background-angle), orangered, #0fdd00);
+  --background-gradient: linear-gradient(
+    var(--background-angle),
+    orangered,
+    #0fdd00
+  );
   background: var(--background-gradient);
   min-height: 100vh;
   padding: 1rem;
@@ -12,37 +16,35 @@ body {
 #root {
   display: flex;
   flex-direction: column;
-  max-width:600px;
+  max-width: 600px;
 }
 
 header {
-  display:grid;
+  display: grid;
   grid-template-columns: 75% 20%;
-  gap:.5rem;
-  margin-bottom:.5rem;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .new-game-button {
-  margin-bottom:.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .welcome {
-  font-family: var(--font-permanent-marker);
-} 
+  font-family: var(--font-righteous);
+}
 
 @property --background-angle {
-  syntax:"<angle>";
+  syntax: "<angle>";
   inherits: true;
-  initial-value:0deg;
+  initial-value: 0deg;
 }
 
 @keyframes rotate {
   0% {
-    --background-angle:0deg;
+    --background-angle: 0deg;
   }
   100% {
-    --background-angle:360deg;
-  
-  
+    --background-angle: 360deg;
   }
 }
